@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - 
+  build:
+    commands:
+      - echo Build started on `date`      
+      - docker build -t node-app .
+      - docker tag node-app:latest 282484137350.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-repo:latest
+  post_build:
+    commands:
+      - echo Build started on `date`
+      - echo Pushing the Docker image...
+      - docker push 282484137350.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-repo:latest
+artifacts:
+  files: appspec.yaml
