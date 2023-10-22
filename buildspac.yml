@@ -14,6 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Pushing the Docker image...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 282484137350.dkr.ecr.us-east-1.amazonaws.com
       - docker push 282484137350.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-repo:latest
 artifacts:
   files: appspec.yaml
