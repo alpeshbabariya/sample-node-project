@@ -1,14 +1,9 @@
-version: '3.7'
-
+version: '3'
 services:
-  environment:
-    container_name: environment
-    build:
-      context: .
-      dockerfile: dockerfile
+  nodejs-service:
+    image: 282484137350.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-repo:latest
     ports:
-      - 3000:3000
-    stdin_open: true
+      - "3000:3000"
     environment:
-      - SAMPLE_USEPOLLING=true
-    command: node app.js
+      - NODE_ENV=production
+    
